@@ -113,8 +113,8 @@
   --k-color-bg-decorative-red: #ffc6c6; /** For spend categories */
   --k-color-bg-decorative-yellow: #fbe49f; /** For spend categories */
   --k-color-bg-opacity-offwhite-0: rgba(27, 22, 29, 0); /** Background for disabled components (inputs, buttons, etc.). */
-  --k-color-bg-overlay-30: rgba(27, 22, 29, 0.3);
-  --k-color-bg-overlay-60: rgba(27, 22, 29, 0.6);
+  --k-color-bg-overlay-30: rgba(27, 22, 29, 0.5);
+  --k-color-bg-overlay-60: rgba(27, 22, 29, 0.8);
   --k-color-loader-circular-brand-alpha: rgba(252, 247, 242, 0);
   --k-color-loader-circular-on-brand-alpha: rgba(252, 247, 242, 0);
   --k-color-loader-circular-white-alpha: rgba(252, 247, 242, 0);
@@ -132,7 +132,7 @@
   --k-color-bg-brand-primary-hovered: var(--k-purple-400);
   --k-color-bg-brand-secondary-default: var(--k-softblack-solid-600);
   --k-color-bg-brand-secondary-hovered: var(--k-softblack-solid-500);
-  --k-color-bg-disabled*: var(--k-offwhite-opacity-2); /** Background for disabled components (inputs, buttons, etc.). */
+  --k-color-bg-disabled: var(--k-offwhite-opacity-2); /** Background for disabled components (inputs, buttons, etc.). */
   --k-color-bg-modal: var(--k-softblack-solid-800);
   --k-color-bg-opacity-offwhite-100: var(--k-offwhite-solid-900); /** Background for disabled components (inputs, buttons, etc.). */
   --k-color-bg-primary: var(--k-offwhite-opacity-4);
@@ -147,7 +147,8 @@
   --k-color-bg-state-warning-hovered: var(--k-orange-200);
   --k-color-bg-surface: var(--k-softblack-solid-900);
   --k-color-bg-tertiary: var(--k-offwhite-opacity-8);
-  --k-color-bg-transparent: var(--k-offwhite-opacity-8); /** Background for disabled components (inputs, buttons, etc.). */
+  --k-color-bg-transparent-default: var(--k-offwhite-opacity-8); /** Background for disabled components (inputs, buttons, etc.). */
+  --k-color-bg-transparent-hovered: var(--k-offwhite-opacity-10); /** Background for disabled components (inputs, buttons, etc.). */
   --k-color-border-accent-green-default: var(--k-green-400);
   --k-color-border-accent-green-lightest: var(--k-green-800);
   --k-color-border-accent-orange-default: var(--k-orange-400);

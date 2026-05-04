@@ -132,7 +132,7 @@
   --k-color-bg-brand-primary-hovered: var(--k-softblack-solid-800);
   --k-color-bg-brand-secondary-default: var(--k-lavender-100);
   --k-color-bg-brand-secondary-hovered: var(--k-lavender-200);
-  --k-color-bg-disabled*: var(--k-offwhite-solid-100); /** Background for disabled components (inputs, buttons, etc.). */
+  --k-color-bg-disabled: var(--k-offwhite-solid-100); /** Background for disabled components (inputs, buttons, etc.). */
   --k-color-bg-modal: var(--k-offwhite-solid-50);
   --k-color-bg-opacity-offwhite-100: var(--k-offwhite-solid-50); /** Background for disabled components (inputs, buttons, etc.). */
   --k-color-bg-primary: var(--k-offwhite-solid-100);
@@ -147,7 +147,8 @@
   --k-color-bg-state-warning-hovered: var(--k-orange-300);
   --k-color-bg-surface: var(--k-offwhite-solid-50);
   --k-color-bg-tertiary: var(--k-offwhite-solid-300);
-  --k-color-bg-transparent: var(--k-offwhite-opacity-8); /** Background for disabled components (inputs, buttons, etc.). */
+  --k-color-bg-transparent-default: var(--k-offwhite-opacity-8); /** Background for disabled components (inputs, buttons, etc.). */
+  --k-color-bg-transparent-hovered: var(--k-offwhite-opacity-10); /** Background for disabled components (inputs, buttons, etc.). */
   --k-color-border-accent-green-default: var(--k-green-500);
   --k-color-border-accent-green-lightest: var(--k-green-100);
   --k-color-border-accent-orange-default: var(--k-orange-500);
