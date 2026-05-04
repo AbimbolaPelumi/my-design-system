@@ -4,25 +4,26 @@ import { promises as fs } from 'fs'
 // ─── Custom transforms ────────────────────────────────────────────────────────
 
 StyleDictionary.registerTransform({
-  name: 'size/pxToRem',
-  type: 'value',
-  filter: (token) =>
-    token.$type === 'number' &&
-    token.path.some((p) => p === 'size'),
-  transform: (token) => `${token.$value / 16}rem`,
+    name: 'size/pxToRem',
+    type: 'value',
+    filter: (token) =>
+        token.$type === 'number' &&
+        token.path.some((p) => p === 'size'),
+    transform: (token) => `${token.$value / 16}rem`,
 })
 
 StyleDictionary.registerTransform({
-  name: 'size/px',
-  type: 'value',
-  filter: (token) =>
-    token.$type === 'number' &&
-    !token.path.some((p) => p === 'size') &&
-    !token.path.some((p) => p === 'weight'),
-  transform: (token) => {
-    if (token.$value === 0) return '0'
-    return `${token.$value}px`
-  },
+    name: 'size/px',
+    type: 'value',
+    filter: (token) =>
+        token.$type === 'number' &&
+        !token.path.some((p) => p === 'size') &&
+        !token.path.some((p) => p === 'weight') &&
+        !token.path.some((p) => p === 'family'),
+    transform: (token) => {
+        if (token.$value === 0) return '0'
+        return `${token.$value}px`
+    },
 })
 
 StyleDictionary.registerTransform({
