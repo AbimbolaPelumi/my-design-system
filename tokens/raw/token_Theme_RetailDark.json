@@ -118,7 +118,7 @@
           "$description": "For spend categories"
         }
       },
-      "disabled*": {
+      "disabled": {
         "$type": "color",
         "$value": "{offwhite.opacity.2}",
         "$description": "Background for disabled components (inputs, buttons, etc.)."
@@ -144,11 +144,11 @@
       "overlay": {
         "30": {
           "$type": "color",
-          "$value": "#1b161d4d"
+          "$value": "#1b161d80"
         },
         "60": {
           "$type": "color",
-          "$value": "#1b161d99"
+          "$value": "#1b161dcc"
         }
       },
       "primary": {
@@ -210,9 +210,16 @@
         "$value": "{offwhite.opacity.8}"
       },
       "transparent": {
-        "$type": "color",
-        "$value": "{offwhite.opacity.8}",
-        "$description": "Background for disabled components (inputs, buttons, etc.)."
+        "default": {
+          "$type": "color",
+          "$value": "{offwhite.opacity.8}",
+          "$description": "Background for disabled components (inputs, buttons, etc.)."
+        },
+        "hovered": {
+          "$type": "color",
+          "$value": "{offwhite.opacity.10}",
+          "$description": "Background for disabled components (inputs, buttons, etc.)."
+        }
       }
     },
     "border": {
