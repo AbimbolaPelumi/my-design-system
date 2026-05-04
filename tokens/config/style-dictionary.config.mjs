@@ -4,36 +4,56 @@ import { promises as fs } from 'fs'
 // ─── Custom transforms ────────────────────────────────────────────────────────
 
 StyleDictionary.registerTransform({
-    name: 'size/pxToRem',
-    type: 'value',
-    filter: (token) =>
-        token.$type === 'number' &&
-        token.path.some((p) => p === 'size'),
-    transform: (token) => `${token.$value / 16}rem`,
+  name: 'size/pxToRem',
+  type: 'value',
+  filter: (token) =>
+    (token.$type ?? token.type) === 'number' &&
+    token.path.some((p) => p === 'size'),
+  transform: (token) => `${(token.$value ?? token.value) / 16}rem`,
 })
 
 StyleDictionary.registerTransform({
-    name: 'size/px',
-    type: 'value',
-    filter: (token) =>
-        token.$type === 'number' &&
-        !token.path.some((p) => p === 'size') &&
-        !token.path.some((p) => p === 'weight') &&
-        !token.path.some((p) => p === 'family'),
-    transform: (token) => {
-        if (token.$value === 0) return '0'
-        return `${token.$value}px`
-    },
+  name: 'size/px',
+  type: 'value',
+  filter: (token) => {
+    if (token.path[0] === 'spacing' && token.path[1] === '1') {
+      console.log('DEBUG size/px FILTER CALLED! $type:', JSON.stringify(token.$type), 'type:', JSON.stringify(token.type), 'path:', token.path)
+      return true
+    }
+    const typeMatch = (token.$type ?? token.type) === 'number'
+    const notOpacity = token.path[0] !== 'opacity'
+    const notSize = !token.path.some((p) => p === 'size')
+    const notWeight = !token.path.some((p) => p === 'weight')
+    const notFamily = !token.path.some((p) => p === 'family')
+    return typeMatch && notOpacity && notSize && notWeight && notFamily
+  },
+  transform: (token) => {
+    const v = token.$value ?? token.value
+    if (token.path[0] === 'spacing' && token.path[1] === '1') console.log('DEBUG size/px TRANSFORM FIRED, v=', v)
+    return v === 0 ? '0' : `${v}px`
+  },
 })
 
 StyleDictionary.registerTransform({
-    name: 'name/commaToHyphen',
-    type: 'name',
-    transform: (token) => {
-      const name = token.path.join('-').replace(/,/g, '-')
-      const prefixed = /^\d/.test(name) ? `size-${name}` : name
-      return `k-${prefixed}`
-    },
+  name: 'opacity/fraction',
+  type: 'value',
+  filter: (token) =>
+    (token.$type ?? token.type) === 'number' && token.path[0] === 'opacity',
+  transform: (token) => (token.$value ?? token.value) / 100,
+})
+
+StyleDictionary.registerTransform({
+  name: 'name/kuda',
+  type: 'name',
+  transform: (token) => {
+    const name = token.path
+      .join('-')
+      .replace(/,/g, '-')
+      .replace(/\*/g, '')
+      .replace(/-+/g, '-')
+      .replace(/-$/, '')
+    return `k-${name}`
+  },
 })
 
 // ─── Transform groups ─────────────────────────────────────────────────────────
@@ -41,9 +61,10 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerTransformGroup({
   name: 'kuda/css',
   transforms: [
-    'name/commaToHyphen',
+    'name/kuda',
     'size/pxToRem',
     'size/px',
+    'opacity/fraction',
     'color/css',
   ],
 })
@@ -85,45 +106,20 @@ const themes = [
   },
 ]
 
-// ─── Individual shared builds (one file per token type) ───────────────────────
-
 const sharedFiles = [
-  {
-    name: 'spacing',
-    source: 'tokens/raw/token_Spacing_Mode1.json',
-    prefix: 'spacing',
-  },
-  {
-    name: 'sizing',
-    source: 'tokens/raw/token_Sizing_Mode1.json',
-    prefix: 'sizing',
-  },
-  {
-    name: 'typography',
-    source: 'tokens/raw/token_Typography_Mode1.json',
-    prefix: 'typography',
-  },
-  {
-    name: 'radius',
-    source: 'tokens/raw/token_Radius_Mode1.json',
-    prefix: 'radius',
-  },
-  {
-    name: 'stroke-width',
-    source: 'tokens/raw/token_StrokeWidth_Mode1.json',
-    prefix: 'stroke',
-  },
-  {
-    name: 'opacity',
-    source: 'tokens/raw/token_Opacity_Mode1.json',
-    prefix: 'opacity',
-  },
+  { name: 'spacing', source: 'tokens/raw/token_Spacing_Mode1.json' },
+  { name: 'sizing', source: 'tokens/raw/token_Sizing_Mode1.json' },
+  { name: 'typography', source: 'tokens/raw/token_Typography_Mode1.json' },
+  { name: 'radius', source: 'tokens/raw/token_Radius_Mode1.json' },
+  { name: 'stroke-width', source: 'tokens/raw/token_StrokeWidth_Mode1.json' },
+  { name: 'opacity', source: 'tokens/raw/token_Opacity_Mode1.json' },
 ]
 
 // ─── Build functions ──────────────────────────────────────────────────────────
 
 async function buildTheme(theme) {
   const sd = new StyleDictionary({
+    usesDtcg: true,
     source: theme.sources,
     platforms: {
       css: {
@@ -151,17 +147,10 @@ async function buildTheme(theme) {
 }
 
 async function buildSharedFile(file) {
-  // Wrap tokens in a namespace prefix to avoid collisions
-  const raw = JSON.parse(
-    await fs.readFile(file.source, 'utf8')
-  )
-  const wrapped = { [file.prefix]: raw }
-
-  const tmpPath = `tokens/raw/tmp_${file.name}.json`
-  await fs.writeFile(tmpPath, JSON.stringify(wrapped, null, 2))
-
+  const rawJson = JSON.parse(await fs.readFile(file.source, 'utf8'))
   const sd = new StyleDictionary({
-    source: [tmpPath],
+    usesDtcg: true,
+    tokens: { [file.name]: rawJson },
     platforms: {
       css: {
         transformGroup: 'kuda/css',
@@ -185,20 +174,15 @@ async function buildSharedFile(file) {
   })
 
   await sd.buildAllPlatforms()
-
-  // Clean up temp file
-  await fs.unlink(tmpPath)
 }
 
 async function main() {
   await fs.mkdir('tokens/output', { recursive: true })
 
-  // Build shared token files individually
   for (const file of sharedFiles) {
     await buildSharedFile(file)
   }
 
-  // Build theme files
   for (const theme of themes) {
     await buildTheme(theme)
   }

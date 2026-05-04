@@ -4,8 +4,8 @@
  */
 
 :root {
-  --k-stroke-0: 0;
-  --k-stroke-1: 1;
-  --k-stroke-2: 2;
-  --k-stroke-0-5: 0.5;
+  --k-stroke-width-0: 0;
+  --k-stroke-width-1: 1;
+  --k-stroke-width-2: 2;
+  --k-stroke-width-0-5: 0.5;
 }

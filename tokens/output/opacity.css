@@ -5,14 +5,14 @@
 
 :root {
   --k-opacity-0: 0;
-  --k-opacity-10: 10;
-  --k-opacity-20: 20;
-  --k-opacity-30: 30;
-  --k-opacity-40: 40;
-  --k-opacity-50: 50;
-  --k-opacity-60: 60;
-  --k-opacity-70: 70;
-  --k-opacity-80: 80;
-  --k-opacity-90: 90;
-  --k-opacity-100: 100;
+  --k-opacity-10: 0.1;
+  --k-opacity-20: 0.2;
+  --k-opacity-30: 0.3;
+  --k-opacity-40: 0.4;
+  --k-opacity-50: 0.5;
+  --k-opacity-60: 0.6;
+  --k-opacity-70: 0.7;
+  --k-opacity-80: 0.8;
+  --k-opacity-90: 0.9;
+  --k-opacity-100: 1;
 }
