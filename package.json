@@ -6,9 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "sync-tokens": "node scripts/sync-tokens.mjs",
-    "build-tokens": "node tokens/config/style-dictionary.config.mjs"
+    "lint": "next lint",
+    "build-tokens": "node tokens/config/style-dictionary.config.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
