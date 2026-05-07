@@ -5,7 +5,7 @@
 
 :root {
   --k-stroke-width-0: 0;
-  --k-stroke-width-1: 1;
-  --k-stroke-width-2: 2;
-  --k-stroke-width-0-5: 0.5;
+  --k-stroke-width-1: 1px;
+  --k-stroke-width-2: 2px;
+  --k-stroke-width-0-5: 0.5px;
 }
