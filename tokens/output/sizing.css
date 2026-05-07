@@ -5,18 +5,18 @@
 
 :root {
   --k-sizing-0: 0;
-  --k-sizing-4: 16;
-  --k-sizing-6: 24;
-  --k-sizing-8: 32;
-  --k-sizing-10: 40;
-  --k-sizing-12: 48;
-  --k-sizing-14: 56;
-  --k-sizing-16: 64;
-  --k-sizing-20: 80;
-  --k-sizing-24: 96;
-  --k-sizing-32: 128;
-  --k-sizing-40: 160;
-  --k-sizing-48: 192;
-  --k-sizing-56: 224;
-  --k-sizing-64: 256;
+  --k-sizing-4: 1rem;
+  --k-sizing-6: 1.5rem;
+  --k-sizing-8: 2rem;
+  --k-sizing-10: 2.5rem;
+  --k-sizing-12: 3rem;
+  --k-sizing-14: 3.5rem;
+  --k-sizing-16: 4rem;
+  --k-sizing-20: 5rem;
+  --k-sizing-24: 6rem;
+  --k-sizing-32: 8rem;
+  --k-sizing-40: 10rem;
+  --k-sizing-48: 12rem;
+  --k-sizing-56: 14rem;
+  --k-sizing-64: 16rem;
 }

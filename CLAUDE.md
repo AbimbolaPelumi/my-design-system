@@ -27,6 +27,12 @@ It is the single source of code for all UI components used in prototypes.
 - Use `get_design_context` via Figma MCP at the start of every component session
 - Use `get_variable_defs` to confirm which tokens the component references in Figma
 - All Figma variants must map 1:1 to TypeScript props
+- Translate Figma variants into clean React and Radix APIs; do not blindly copy Figma-only state names into public props
+- Do not expose duplicate props. For example, use Radix `checked`, `defaultChecked`, and `disabled` instead of adding aliases like `active` or a separate `state="Disabled"`
+- Keep transient visual states such as hover, pressed, and focus as CSS states or Storybook visual examples unless consumers genuinely need to control them
+- Storybook controls should expose consumer-facing props only; visual matrices can demonstrate design states without expanding the component API
+- Match Figma layout and token values exactly for component variants, especially spacing, sizing, backgrounds, and typography. If a Figma variant has a visible background or layout distinction, the Storybook story must make that distinction obvious
+- Before calling a component complete, verify the rendered Storybook output, not only TypeScript/build success
 - Preserve all Radix UI accessibility behaviour from the underlying ShadCN primitive
 - Export a named TypeScript interface for every component's props
 

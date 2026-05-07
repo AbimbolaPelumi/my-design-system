@@ -3,33 +3,56 @@ import { promises as fs } from 'fs'
 
 // ─── Custom transforms ────────────────────────────────────────────────────────
 
+const REM_BASE_PX = 16
+
+function getTokenType(token) {
+  return token.$type ?? token.type
+}
+
+function getTokenValue(token) {
+  return token.$value ?? token.value
+}
+
+function isNumberToken(token) {
+  return getTokenType(token) === 'number'
+}
+
+function isRemToken(token) {
+  const [category, type] = token.path
+
+  return (
+    category === 'spacing' ||
+    category === 'sizing' ||
+    category === 'radius' ||
+    (category === 'typography' &&
+      ['letter-spacing', 'line-height', 'size'].includes(type))
+  )
+}
+
+function pxToRem(value) {
+  return value === 0 ? '0' : `${value / REM_BASE_PX}rem`
+}
+
 StyleDictionary.registerTransform({
-  name: 'size/pxToRem',
+  name: 'kuda/size/pxToRem',
   type: 'value',
-  filter: (token) =>
-    (token.$type ?? token.type) === 'number' &&
-    token.path.some((p) => p === 'size'),
-  transform: (token) => `${(token.$value ?? token.value) / 16}rem`,
+  filter: (token) => isNumberToken(token) && isRemToken(token),
+  transform: (token) => pxToRem(getTokenValue(token)),
 })
 
 StyleDictionary.registerTransform({
-  name: 'size/px',
+  name: 'kuda/size/px',
   type: 'value',
   filter: (token) => {
-    if (token.path[0] === 'spacing' && token.path[1] === '1') {
-      console.log('DEBUG size/px FILTER CALLED! $type:', JSON.stringify(token.$type), 'type:', JSON.stringify(token.type), 'path:', token.path)
-      return true
-    }
-    const typeMatch = (token.$type ?? token.type) === 'number'
+    const typeMatch = isNumberToken(token)
     const notOpacity = token.path[0] !== 'opacity'
-    const notSize = !token.path.some((p) => p === 'size')
+    const notRemToken = !isRemToken(token)
     const notWeight = !token.path.some((p) => p === 'weight')
     const notFamily = !token.path.some((p) => p === 'family')
-    return typeMatch && notOpacity && notSize && notWeight && notFamily
+    return typeMatch && notOpacity && notRemToken && notWeight && notFamily
   },
   transform: (token) => {
-    const v = token.$value ?? token.value
-    if (token.path[0] === 'spacing' && token.path[1] === '1') console.log('DEBUG size/px TRANSFORM FIRED, v=', v)
+    const v = getTokenValue(token)
     return v === 0 ? '0' : `${v}px`
   },
 })
@@ -37,9 +60,8 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerTransform({
   name: 'opacity/fraction',
   type: 'value',
-  filter: (token) =>
-    (token.$type ?? token.type) === 'number' && token.path[0] === 'opacity',
-  transform: (token) => (token.$value ?? token.value) / 100,
+  filter: (token) => isNumberToken(token) && token.path[0] === 'opacity',
+  transform: (token) => getTokenValue(token) / 100,
 })
 
 StyleDictionary.registerTransform({
@@ -62,8 +84,8 @@ StyleDictionary.registerTransformGroup({
   name: 'kuda/css',
   transforms: [
     'name/kuda',
-    'size/pxToRem',
-    'size/px',
+    'kuda/size/pxToRem',
+    'kuda/size/px',
     'opacity/fraction',
     'color/css',
   ],

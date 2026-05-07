@@ -1,6 +1,8 @@
 import React from 'react'
 import type { Preview } from '@storybook/react'
 import '../app/globals.css'
+import { kudaModena, suisseIntl } from '../app/fonts'
+import { cn } from '../lib/utils'
 
 const preview: Preview = {
   parameters: {
@@ -29,7 +31,16 @@ const preview: Preview = {
     (Story, context) => {
       const theme = context.globals.theme || 'retail-light'
       document.documentElement.setAttribute('data-theme', theme)
-      return <Story />
+      document.documentElement.classList.add(
+        'font-sans',
+        suisseIntl.variable,
+        kudaModena.variable
+      )
+      return (
+        <div className={cn('font-sans', suisseIntl.variable, kudaModena.variable)}>
+          <Story />
+        </div>
+      )
     },
   ],
 }

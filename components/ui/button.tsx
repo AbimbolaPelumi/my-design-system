@@ -97,6 +97,15 @@ const destructiveClass = [
   "disabled:text-[var(--k-color-text-on-solid-disabled)]",
 ].join(" ")
 
+const destructiveTextClass = [
+  "bg-transparent",
+  "text-[var(--k-color-text-state-error-default)]",
+  "hover:bg-[var(--k-color-bg-accent-red-lightest)]",
+  "hover:text-[var(--k-color-text-state-error-hover)]",
+  "disabled:bg-transparent",
+  "disabled:text-[var(--k-color-text-state-error-disabled)]",
+].join(" ")
+
 export interface ButtonProps extends React.ComponentProps<"button"> {
   variant?: "Filled" | "Tonal" | "Outlined" | "Text"
   size?: "lg" | "md" | "sm" | "xs"
@@ -132,6 +141,7 @@ function Button({
       className={cn(
         buttonVariants({ variant, size }),
         variant === "Filled" && isDestructive && destructiveClass,
+        variant === "Text" && isDestructive && destructiveTextClass,
         className
       )}
       disabled={disabled || isLoading}
