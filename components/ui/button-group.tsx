@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import Button from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import Button from "./button"
+import { cn } from "../../lib/utils"
 
 export type ButtonGroupComposition =
   | "filled + tonal"

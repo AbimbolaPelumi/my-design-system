@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import Checkbox, { type CheckboxProps } from "@/components/ui/checkbox"
-import { cn } from "@/lib/utils"
+import Checkbox, { type CheckboxProps } from "./checkbox"
+import { cn } from "../../lib/utils"
 
 export interface CheckboxFieldProps
   extends Omit<CheckboxProps, "children" | "className"> {

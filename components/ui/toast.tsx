@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Toast as ToastPrimitive } from "radix-ui"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 export interface ToastProps
   extends React.ComponentProps<typeof ToastPrimitive.Root> {

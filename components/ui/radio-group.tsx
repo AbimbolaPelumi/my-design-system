@@ -2,8 +2,9 @@
 
 import * as React from "react"
 import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface RadioButtonProps
   extends React.ComponentProps<typeof RadioGroupPrimitive.Item> {}
 

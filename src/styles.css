@@ -1,0 +1,196 @@
+@import "../tokens/output/retail-light.css";
+@import "../tokens/output/retail-dark.css";
+@import "../tokens/output/business-light.css";
+@import "../tokens/output/business-dark.css";
+@import "../tokens/output/spacing.css";
+@import "../tokens/output/sizing.css";
+@import "../tokens/output/typography.css";
+@import "../tokens/output/radius.css";
+@import "../tokens/output/stroke-width.css";
+@import "../tokens/output/opacity.css";
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@source "../components/**/*.{ts,tsx}";
+@source "../lib/**/*.{ts,tsx}";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../app/fonts/SuisseIntl-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../app/fonts/SuisseIntl-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kuda Modena";
+  src: url("../app/fonts/KUDAModena-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kuda Modena";
+  src: url("../app/fonts/KUDAModena-Heavy.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-suisse-intl);
+  --font-mono: ui-monospace, "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
+  --font-heading: var(--font-kuda-modena);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --font-suisse-intl: "Suisse Intl", Arial, Helvetica, sans-serif;
+  --font-kuda-modena: "Kuda Modena", Arial, Helvetica, sans-serif;
+
+  --background: var(--k-color-bg-surface);
+  --foreground: var(--k-color-text-primary);
+  --card: var(--k-color-bg-primary);
+  --card-foreground: var(--k-color-text-primary);
+  --popover: var(--k-color-bg-modal);
+  --popover-foreground: var(--k-color-text-primary);
+  --primary: var(--k-color-bg-brand-primary-default);
+  --primary-foreground: var(--k-color-text-on-brand-default);
+  --secondary: var(--k-color-bg-brand-secondary-default);
+  --secondary-foreground: var(--k-color-text-primary);
+  --muted: var(--k-color-bg-secondary);
+  --muted-foreground: var(--k-color-text-secondary);
+  --accent: var(--k-color-bg-brand-secondary-default);
+  --accent-foreground: var(--k-color-text-primary);
+  --destructive: var(--k-color-button-bg-destructive-default);
+  --border: var(--k-color-border-primary);
+  --input: var(--k-color-border-primary);
+  --ring: var(--k-color-border-brand-primary-default);
+  --radius: var(--k-radius-md);
+  --sidebar: var(--k-color-bg-surface);
+  --sidebar-foreground: var(--k-color-text-primary);
+  --sidebar-primary: var(--k-color-bg-brand-primary-default);
+  --sidebar-primary-foreground: var(--k-color-text-on-brand-default);
+  --sidebar-accent: var(--k-color-bg-brand-secondary-default);
+  --sidebar-accent-foreground: var(--k-color-text-primary);
+  --sidebar-border: var(--k-color-border-primary);
+  --sidebar-ring: var(--k-color-border-brand-primary-default);
+  --chart-1: var(--k-purple-500);
+  --chart-2: var(--k-lavender-500);
+  --chart-3: var(--k-green-500);
+  --chart-4: var(--k-orange-500);
+  --chart-5: var(--k-yellow-500);
+}
+
+[data-theme="retail-dark"],
+[data-theme="business-light"],
+[data-theme="business-dark"] {
+  --background: var(--k-color-bg-surface);
+  --foreground: var(--k-color-text-primary);
+  --card: var(--k-color-bg-primary);
+  --card-foreground: var(--k-color-text-primary);
+  --popover: var(--k-color-bg-modal);
+  --popover-foreground: var(--k-color-text-primary);
+  --primary: var(--k-color-bg-brand-primary-default);
+  --primary-foreground: var(--k-color-text-on-brand-default);
+  --secondary: var(--k-color-bg-brand-secondary-default);
+  --secondary-foreground: var(--k-color-text-primary);
+  --muted: var(--k-color-bg-secondary);
+  --muted-foreground: var(--k-color-text-secondary);
+  --accent: var(--k-color-bg-brand-secondary-default);
+  --accent-foreground: var(--k-color-text-primary);
+  --destructive: var(--k-color-button-bg-destructive-default);
+  --border: var(--k-color-border-primary);
+  --input: var(--k-color-border-primary);
+  --ring: var(--k-color-border-brand-primary-default);
+  --sidebar: var(--k-color-bg-surface);
+  --sidebar-foreground: var(--k-color-text-primary);
+  --sidebar-primary: var(--k-color-bg-brand-primary-default);
+  --sidebar-primary-foreground: var(--k-color-text-on-brand-default);
+  --sidebar-accent: var(--k-color-bg-brand-secondary-default);
+  --sidebar-accent-foreground: var(--k-color-text-primary);
+  --sidebar-border: var(--k-color-border-primary);
+  --sidebar-ring: var(--k-color-border-brand-primary-default);
+  --chart-1: var(--k-purple-500);
+  --chart-2: var(--k-lavender-500);
+  --chart-3: var(--k-green-500);
+  --chart-4: var(--k-orange-500);
+  --chart-5: var(--k-yellow-500);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    @apply font-sans;
+  }
+}

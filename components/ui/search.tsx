@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { CircleX, Search as SearchIcon } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 export interface SearchProps extends Omit<React.ComponentProps<"input">, "size"> {
   onClear?: () => void

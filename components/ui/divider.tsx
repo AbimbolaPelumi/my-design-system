@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Separator as SeparatorPrimitive } from "radix-ui"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 export interface DividerProps
   extends React.ComponentProps<typeof SeparatorPrimitive.Root> {

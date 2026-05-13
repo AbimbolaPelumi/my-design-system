@@ -19,8 +19,8 @@ import {
   Utensils,
   Wifi,
 } from "lucide-react"
-import Select, { type SelectOption, type SelectProps } from "@/components/ui/select"
-import { cn } from "@/lib/utils"
+import Select, { type SelectOption, type SelectProps } from "./select"
+import { cn } from "../../lib/utils"
 
 export type SpendCategory =
   | "Food"

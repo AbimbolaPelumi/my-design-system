@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/nextjs-vite'
 import '../app/globals.css'
 import { kudaModena, suisseIntl } from '../app/fonts'
 import { cn } from '../lib/utils'

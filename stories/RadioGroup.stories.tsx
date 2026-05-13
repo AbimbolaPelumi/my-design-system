@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
 import { RadioButton, RadioField, RadioGroup } from "@/components/ui/radio-group"
 

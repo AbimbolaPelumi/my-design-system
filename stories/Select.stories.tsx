@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import Select from "@/components/ui/select"
 import { SpendCategoryChip, SpendCategorySelect, spendCategories } from "@/components/ui/spend-category"
 

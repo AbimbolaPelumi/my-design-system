@@ -3,8 +3,9 @@
 import * as React from "react"
 import { Check, Minus } from "lucide-react"
 import { Checkbox as CheckboxPrimitive } from "radix-ui"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CheckboxProps
   extends Omit<React.ComponentProps<typeof CheckboxPrimitive.Root>, "children"> {}
 

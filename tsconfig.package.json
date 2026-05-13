@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "composite": false,
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
+    "incremental": false,
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": ".",
+    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.package.tsbuildinfo"
+  },
+  "include": ["src/**/*.ts", "components/ui/**/*.tsx", "lib/**/*.ts"],
+  "exclude": ["node_modules", "dist", ".next", "stories"]
+}

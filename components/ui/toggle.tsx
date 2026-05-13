@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { Switch } from "radix-ui"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface ToggleProps
-  extends Omit<React.ComponentProps<typeof Switch.Root>, "children"> {
-}
+  extends Omit<React.ComponentProps<typeof Switch.Root>, "children"> {}
 
 function Toggle({
   className,

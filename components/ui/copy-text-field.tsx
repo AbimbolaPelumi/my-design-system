@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Copy } from "lucide-react"
-import LinkButton from "@/components/ui/link-button"
-import { cn } from "@/lib/utils"
+import LinkButton from "./link-button"
+import { cn } from "../../lib/utils"
 
 export interface CopyTextFieldProps extends React.ComponentProps<"div"> {
   label?: React.ReactNode

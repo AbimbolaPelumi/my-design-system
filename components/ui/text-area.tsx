@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Info } from "lucide-react"
-import { cn } from "@/lib/utils"
-import type { FieldValidation } from "@/components/ui/text-field"
+import { cn } from "../../lib/utils"
+import type { FieldValidation } from "./text-field"
 
 export interface TextAreaProps
   extends Omit<React.ComponentProps<"textarea">, "size"> {

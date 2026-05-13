@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Badge, CounterBadge, StatusBadge } from "@/components/ui/badge"
 
 const BADGE_COLOURS = [

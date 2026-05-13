@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import CopyTextField from "@/components/ui/copy-text-field"
 
 const meta: Meta<typeof CopyTextField> = {

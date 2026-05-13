@@ -2,8 +2,9 @@
 
 import * as React from "react"
 import { Slider as SliderPrimitive } from "radix-ui"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SliderProps
   extends React.ComponentProps<typeof SliderPrimitive.Root> {}
 
